@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+
+{% block content %}
+
+    <style>
+        .wrapper {
+            background: url("{% static '/site_images/soundwave.jpg' %}");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: 50%;
+
+
+        }
+
+        .overlay {
+            background-color: rgba(33, 33, 33, 0.5);
+            display: block;
+            height: 100%;
+            position: absolute;
+            width: 100%;
+
+        }
+
+        .blur {
+            -webkit-filter: blur(3px);
+            -moz-filter: blur(3px);
+            -o-filter: blur(3px);
+            -ms-filter: blur(3px);
+            filter: blur(3px);
+        }
+
+        #rcorners1 {
+            border-radius: 25px;
+            background: #73AD21;
+            padding: 20px;
+            width: 200px;
+            height: 150px;
+        }
+
+    </style>
+
+
+    <div class="hero-section">
+        <div class="hero-section-container">
+
+            <div class="floating-section">
+
+                <h1>
+                    <b style="background-color: hsla(80, 60%, 35%, 0.4); padding: 10px; -webkit-filter: opacity(100%); -webkit-backdrop-filter: opacity(20%)" id="rcorners1">Dialogue
+                        Classifier</b></h1>
+            </div>
+            {% if not user.is_authenticated %}
+                <div class="floating-section">
+
+                    <a class="btn btn-info" href="{% url 'login' %}"> <b>Login</b></a>
+                </div>
+            {% endif %}
+        </div>
+
+    </div>
+{% endblock content %}

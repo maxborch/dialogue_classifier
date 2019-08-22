@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <title>Account Activation</title>
+</head>
+<body style="background-color: #f4f4f5;">
+<table cellpadding="0" cellspacing="0"
+       style="width: 100%; height: 100%; background-color: #005EB8; text-align: center;">
+    <tbody>
+    <tr>
+        <td style="text-align: center;">
+            <table align="center" cellpadding="0" cellspacing="0" id="body"
+                   style="background-color: #fff; width: 100%; max-width: 680px; height: 100%;">
+                <tbody>
+                <tr>
+                    <td>
+                        <table align="center" cellpadding="0" cellspacing="0" class="page-center"
+                               style="text-align: left; padding-bottom: 88px; width: 100%; padding-left: 50px; padding-right: 120px;">
+                            <tbody>
+                            <tr>
+                                <td style="padding-top: 24px;">
+                                    <img class="" src="http://40.89.153.187/static/site_images/GOSH2.png" style="width: 300px">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2"
+                                    style="padding-top: 35px; -ms-text-size-adjust: 100%; -webkit-font-smoothing: antialiased; -webkit-text-size-adjust: 100%; color: #000000;  font-size: 48px; font-smoothing: always; font-style: normal; font-weight: 600; letter-spacing: -2.6px; line-height: 52px; mso-line-height-rule: exactly">
+                                    Welcome to the GOSH Rare Disease Repository
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="padding-top: 48px; padding-bottom: 48px;">
+                                    <table cellpadding="0" cellspacing="0" style="width: 100%">
+                                        <tbody>
+                                        <tr>
+                                            <td style="width: 100%; height: 1px; max-height: 1px; background-color: #d9dbe0; opacity: 0.81"></td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="-ms-text-size-adjust: 100%; -webkit-font-smoothing: antialiased; -webkit-text-size-adjust: 100%; color: #9095a2; font-size: 16px; font-smoothing: always; font-style: normal; font-weight: 400; letter-spacing: -0.18px; line-height: 24px; mso-line-height-rule: exactly; vertical-align: top; width: 100%;">
+                                    <p>Hi {{ user.username }}</p>
+                                    <p>Please verify your E-Mail address by clicking on the link below.
+                                    <p/>
+                                        <a href="http://{{ site_url }}{% url 'activate' uidb64=uid token=token %}">Verify
+                                            Account</a>
+                                    <p></p>
+                                    <p>If the above link does not work, please copy and paste the link into the
+                                        browser.</p>
+                                    <p>http://{{ site_url }}{% url 'activate' uidb64=uid token=token %}</p>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+
+    <h2>My Uploads</h2>
+
+    <div class="row">
+        <div class="card">
+            <div class="card-body">
+
+                <div class="table-responsive">
+                    <table class="table content-section">
+                        <thead>
+                        <tr>
+                            <th scope="col">Upload ID</th>
+                            <th scope="col">Title</th>
+                            <th scope="col">Upload Date</th>
+                            <th scope="col">Comments</th>
+                            <th scope="col text-right">Actions</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for upload in users_uploads %}
+                            <tr class="{{ upload.status }}">
+                                <td>{{ upload.id }}</td>
+                                <td>{{ upload.title }}</td>
+                                <td>{{ upload.upload_date }}</td>
+                                <td style="max-width: 50px; text-overflow: ellipsis; white-space: nowrap; overflow: hidden;">{{ upload.comments }}</td>
+                                <td class="td-actions">
+                                    <a class="btn btn-info" href="{% url 'upload-detail' upload.id %}">
+                                        <i class="material-icons">pageview</i>
+                                    </a>
+                                    <a class="btn btn-twitter" href="{% url 'download_file' upload.id %}">
+                                        <i class="material-icons">cloud_download</i>
+                                    </a>
+                                    <a class="btn btn-danger" href="{% url 'upload-delete' upload.id %}">
+                                        <i class="material-icons">delete</i>
+                                    </a>
+                                </td>
+                            </tr>
+                        {% empty %}
+                            <h3 style="padding-left: 18px;">You have not uploaded any files yet</h3>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

@@ -1,0 +1,104 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% load user_tags %}
+
+
+{% block content %}
+    <div class="overflow-auto" style="overflow: auto;">
+
+        <h2 class="float-left">Upload Title: {{ upload.title }}</h2>
+
+        <div class="actions float-right">
+            {% if request.user == upload.user %}
+                {# button to edit upload #}
+                <a class="btn btn-info" href="{% url 'upload-edit' upload.id %}">
+                    <i class="material-icons">edit</i>
+                </a>
+{#                <a class="btn btn-twitter" href="{% url 'download_file' upload.id %}">#}
+{#                    <i class="material-icons">cloud_download</i>#}
+{#                </a>#}
+                {# button to delete upload #}
+                <a class="btn btn-danger" href="{% url 'upload-delete' upload.id %}">
+                    <i class="material-icons">delete</i>
+                </a>
+            {% endif %}
+        </div>
+    </div>
+    <div class="{{ case.status }}">
+        <div class="row">
+            <div class="col-md-7">
+                <div class="card">
+                    <div class="card-body">
+                        <h3>Upload Details</h3>
+                        <h4><b>Title</b></h4>
+                        <p style="text-indent: 15px">{{ upload.title }}</p>
+                        <h4><b>Upload Date</b></h4>
+                        <p style="text-indent: 15px">{{ upload.upload_date }}</p>
+                        <h4><b>Comments</b></h4>
+                        <p style="text-indent: 15px">{{ upload.comments }}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <h3>Results</h3>
+                    <h5>Click here to download .csv containing the results</h5>
+                    <a class="btn btn-twitter" href="{% url 'download_file' upload.id %}">
+                    <i class="material-icons">cloud_download</i>
+                </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% comment %}    <h3>Results</h3>
+    <div class="row case-files case-audios">
+        {% for file in media %}
+            {% if file.file_type == 'other' %}
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="file card-body">
+                            <h5>{{ file.filename }}</h5>
+                            <button type="button" class="btn btn-danger" data-toggle="modal"
+                                    data-target="#confirmDelete{{ file.id }}">
+                                <i class="material-icons">delete</i>
+                            </button>
+                            <div class="modal fade" id="confirmDelete{{ file.id }}" tabindex="-1" role="dialog"
+                                 aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                            <button type="button" class="close" data-dismiss="modal"
+                                                    aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <p>Are you sure you want to delete this item?</p>
+                                            <p><i class="fas fa-file-audio"></i> {{ file.filename }}</p>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <form class="form-group" method="post"
+                                                  action="{% url 'delete-archive' file.id %}">
+                                                {% csrf_token %}
+                                                <button type="submit" class="btn btn-danger"
+                                                        data-original-title=""
+                                                        title="">Delete
+                                                </button>
+                                            </form>
+                                            <button type="button" class="btn btn-secondary"
+                                                    data-dismiss="modal">Cancel
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+        {% endfor %}
+    </div>{% endcomment %}
+    </div>
+{% endblock content %}

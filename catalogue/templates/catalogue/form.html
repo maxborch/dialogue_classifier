@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% load user_tags %}
+{% load static %}
+
+{% block content %}
+
+    <div class="row">
+        <div class="col-md-7">
+            <div class="card ">
+                <div class="card-body ">
+                    <form method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <fieldset class="form-group">
+                            {% if form.instance.id %}
+                                <legend class="mb-4">Edit {{ model_name }}</legend>
+                            {% else %}
+                                <legend class="mb-4">Add {{ model_name }}</legend>
+                            {% endif %}
+                            {{ form|crispy }}
+                            {{ form.media }}
+                            <h4>Upload CSV Files</h4>
+                            <p>Beware: Filenames must not contain spaces!</p>
+                            <p>Here you can upload .csv files in the format as described below that you want to
+                                analyze.</p>
+                            <p>Every Conversation has four columns: "TimeFrom", "TimeTo", "Speaker", "Gap between
+                                speakers"</p>
+                            <p>First row contains conversation number, second row contains columns names (as described
+                                above)</p>
+                            <p>Every row (from 3rd row onwards) represents a single word</p>
+                            <img src="{% static 'site_images/table_format.png' %}"
+                                 style="max-width: 100%; height: auto">
+                            {{ media_form|crispy }}
+                        </fieldset>
+                        <div class="form-group">
+                            <button class="btn btn-info" type="submit">Submit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="col-md-5    ">
+            <div class="card ">
+                <div class="card-body info-card">
+                    <h3>Guidance</h3>
+                    <p>Do not include any identifiable data about individuals such as their name, location etc</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+{% endblock content %}
+

@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block content %}
+    <div class="row">
+        <div class="card">
+            <div class="card-body">
+                <div class="content-section">
+                    <form method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <fieldset class="form-group">
+                            <legend class="mb-4">Delete Upload</legend>
+                            <h3>Are you sure you want to remove the below upload from the system?</h3>
+                            <div class="alert alert-danger" role="alert">{{ object }}</div>
+                        </fieldset>
+                        <div class="form-group">
+                            <button class="btn btn-danger" type="submit">Delete</button>
+                            <a class="btn" href="{% url 'upload-detail' object.id %}">Cancel</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
