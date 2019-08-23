@@ -1,7 +1,7 @@
 from django.core.validators import FileExtensionValidator
 from django.forms import ModelForm, FileField, Form, ClearableFileInput
 
-from catalogue.models import Upload
+from catalogue.models import Upload, Project
 
 
 class UploadForm(ModelForm):
@@ -16,3 +16,9 @@ class MediaForm(Form):
     files = FileField(help_text=f"Allowed formats: {valid_extensions}... Beware: Filenames must not contain spaces",
                       required=False, widget=ClearableFileInput(attrs={'multiple': True}),
                       validators=[FileExtensionValidator(valid_extensions)])
+
+
+class ProjectForm(ModelForm):
+    class Meta:
+        model = Project
+        fields = ['name', 'description']

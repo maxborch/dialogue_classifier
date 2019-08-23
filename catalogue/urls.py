@@ -8,17 +8,19 @@ from .views import (
     edit_upload,
     delete_archive,
     UploadDeleteView,
-    download_file
+    download_file,
+    AddProjectView
 )
 
 urlpatterns = [
 
-    path('case/add/', upload_file, name='file-upload'),
+    path('upload/add/', upload_file, name='file-upload'),
     path('upload/<int:upload_id>/', upload_detail, name='upload-detail'),
     path('upload/<int:pk>/delete/', UploadDeleteView.as_view(), name='upload-delete'),
     path('upload/<int:upload_id>/edit/', edit_upload, name='upload-edit'),
     path('my-uploads/', my_uploads, name='my-uploads'),
     path('archive/<int:archive_id>/delete', delete_archive, name='delete-archive'),
-    path('download/<int:upload_id>/', download_file, name='download_file')
+    path('download/<int:upload_id>/', download_file, name='download_file'),
+    path('project/add/', AddProjectView.as_view(), name='project-add'),
 
 ]

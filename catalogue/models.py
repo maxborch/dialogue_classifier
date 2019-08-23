@@ -79,3 +79,9 @@ class Media(models.Model):
     def delete(self, *args, **kwargs):
         self.file.delete()
         super().delete(*args, **kwargs)
+
+
+class Project(models.Model):
+    user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
+    name = models.CharField(max_length=5000, null=True)
+    description = models.CharField(max_length=10000, null=True)

@@ -1,8 +1,9 @@
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from .forms import MediaForm, UploadForm  # , CaseForm
-from .models import Upload, Media  # , Case, Disease
+from .models import Upload, Media, Project  # , Case, Disease
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib import messages
 from django.shortcuts import render, redirect
 from django.core.exceptions import PermissionDenied
@@ -161,3 +162,15 @@ class UploadDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 def my_uploads(request):
     users_uploads = Upload.objects.filter(user_id=request.user)
     return render(request, 'catalogue/my_uploads.html', {'users_uploads': users_uploads})
+
+
+class AddProjectView(SuccessMessageMixin, CreateView):
+    """
+    """
+    model = Project
+    fields = ['name', 'description']
+    success_message = 'Project successfully added!'
+    extra_context = {'model_name': str(model.__name__)}
+
+
+
