@@ -1,3 +1,99 @@
+{#{% load static %}#}
+{#{% load user_tags %}#}
+{##}
+{##}
+{#<div class="sidebar" data-color="white" data-background-color="nhsblue" data-image="">#}
+{#    <div class="logo">#}
+{##}
+{#        <a href="/" class="simple-text logo-normal">#}
+{#            <img class="" src="{% static '/site_images/NHS5.png' %}">#}
+{##}
+{#        </a>#}
+{##}
+{#    </div>#}
+{#    <div class="sidebar-wrapper">#}
+{##}
+{#        <div class="catalogue-actions moderator-actions">#}
+{##}
+{#            {% if user.is_authenticated %}#}
+{##}
+{#                </div>#}
+{##}
+{##}
+{#                <div class="nav">#}
+{#                    <div class="catalogue-actions moderator-actions">#}
+{#                        <li class="nav-item">#}
+{#                            <a class="nav-link" href="{% url 'my-uploads' %}">#}
+{#                                <i class="material-icons">speaker_notes</i>#}
+{#                                <p>My Dialogues</p>#}
+{#                            </a>#}
+{#                        </li>#}
+{#                        <li class="nav-item ">#}
+{#                            <a class="nav-link" href="{% url 'file-upload' %}">#}
+{#                                <i class="material-icons">audiotrack</i>#}
+{#                                <p>Process Conversation Data</p>#}
+{#                            </a>#}
+{#                        </li>#}
+{#                        <li class="nav-item ">#}
+{#                            <a class="nav-link" href="{% url 'project-add' %}">#}
+{#                                <i class="material-icons">image</i>#}
+{#                                <p>Add Project</p>#}
+{#                            </a>#}
+{#                        </li>#}
+{#                    </div>#}
+{#                </div>#}
+{#                <div class="nav">#}
+{#                #}
+{#                    <div class="catalogue-actions moderator-actions">#}
+{#                        <li class="nav-item">#}
+{#                            <a class="nav-link" href="#Account" data-toggle="collapse">#}
+{#                                <i class="material-icons">person</i>#}
+{#                                <p>Account#}
+{#                                    <b class="caret"></b>#}
+{#                                </p>#}
+{#                            </a>#}
+{#                            <div class="collapse" id="Account">#}
+{#                                <ul class="nav sub-nav-diseases">#}
+{#                                    <li class="nav-item">#}
+{#                                        <a class="nav-link" href="{% url 'profile' %}">Profile#}
+{#                                        </a>#}
+{#                                    </li>#}
+{#                                    <li class="nav-item">#}
+{#                                        <a class="nav-link" href="{% url 'change_password' %}">Change Password#}
+{#                                        </a>#}
+{#                                    </li>#}
+{#                                    <li class="nav-item">#}
+{#                                        <a class="nav-link" href="{% url 'logout' %}">Log out#}
+{#                                        </a>#}
+{#                                    </li>#}
+{##}
+{#                                </ul>#}
+{#                            </div>#}
+{##}
+{#                    </div>#}
+{#                </div>#}
+{##}
+{##}
+{#            {% endif %}#}
+{##}
+{##}
+{#        <ul class="nav">#}
+{#            {% if user.is_authenticated and request.user|has_group:"administrator" %}#}
+{##}
+{#                <div class="catalogue-actions moderator-actions">#}
+{#                    <li class="nav-item">#}
+{#                        <a class="nav-link" href="{% url 'create-user' %}">#}
+{#                            <i class="material-icons">person_add</i>#}
+{#                            <p>Add User</p>#}
+{#                        </a>#}
+{#                    </li>#}
+{#                </div>#}
+{##}
+{#            {% endif %}#}
+{#        </ul>#}
+{#    </div>#}
+{#</div>#}
+
 {% load static %}
 {% load user_tags %}
 
@@ -16,68 +112,61 @@
         <div class="catalogue-actions moderator-actions">
 
             {% if user.is_authenticated %}
-
-                </div>
-
-
                 <div class="nav">
-                    <div class="catalogue-actions moderator-actions">
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'my-uploads' %}">
-                                <i class="material-icons">speaker_notes</i>
-                                <p>My Dialogues</p>
-                            </a>
-                        </li>
-                        <li class="nav-item ">
-                            <a class="nav-link" href="{% url 'file-upload' %}">
-                                <i class="material-icons">audiotrack</i>
-                                <p>Process Conversation Data</p>
-                            </a>
-                        </li>
-                        <li class="nav-item ">
-                            <a class="nav-link" href="{% url 'project-add' %}">
-                                <i class="material-icons">image</i>
-                                <p>Add Project</p>
-                            </a>
-                        </li>
-                    </div>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#Account" data-toggle="collapse">
+                            <i class="material-icons">person</i>
+                            <p>Account
+                                <b class="caret"></b>
+                            </p>
+                        </a>
+                        <div class="collapse" id="Account">
+                            <ul class="nav sub-nav-diseases">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{% url 'profile' %}">Profile
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{% url 'change_password' %}">Change Password
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{% url 'logout' %}">Log out
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </div>
+
                 </div>
+                </div>
+
+                <div class="catalogue-actions moderator-actions">
                 <div class="nav">
-                    <div class="catalogue-actions moderator-actions">
-                        <li class="nav-item">
-                            <a class="nav-link" href="#Account" data-toggle="collapse">
-                                <i class="material-icons">person</i>
-                                <p>Account
-                                    <b class="caret"></b>
-                                </p>
-                            </a>
-                            <div class="collapse" id="Account">
-                                <ul class="nav sub-nav-diseases">
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="{% url 'profile' %}">Profile
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="{% url 'change_password' %}">Change Password
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="{% url 'logout' %}">Log out
-                                        </a>
-                                    </li>
 
-                                </ul>
-                            </div>
-
-                    </div>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'my-uploads' %}">
+                            <i class="material-icons">speaker_notes</i>
+                            <p>My Dialogues</p>
+                        </a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" href="{% url 'file-upload' %}">
+                            <i class="material-icons">audiotrack</i>
+                            <p>Process Conversation Data</p>
+                        </a>
+                    </li>
                 </div>
+
 
 
             {% endif %}
 
+            </div>
 
         <ul class="nav">
-            {% if user.is_authenticated and request.user|has_group:"administrator" %}
+            {% if request.user|has_group:"administrator" %}
 
                 <div class="catalogue-actions moderator-actions">
                     <li class="nav-item">

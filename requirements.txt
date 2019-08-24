@@ -1,5 +1,6 @@
 certifi==2019.3.9
 chardet==3.0.4
+cognitive-face==1.4.2
 Django==2.1.5
 django-crispy-forms==1.7.2
 django-extensions==2.1.5
