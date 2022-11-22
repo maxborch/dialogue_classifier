@@ -8,7 +8,7 @@ django-filter==2.1.0
 django-filters==0.2.1
 django-static-jquery==2.1.4
 idna==2.8
-Pillow==5.4.1
+Pillow==9.3.0
 psycopg2==2.7.7
 pydotplus==2.0.2
 pyparsing==2.3.1
